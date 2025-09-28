@@ -28,7 +28,6 @@ This app connects **restaurant owners**, **customers**, and **delivery riders** 
 - **Frontend:** Next.js (React Framework), Custom CSS
 - **Backend:** Next.js API Routes
 - **Database:** MongoDB (NoSQL)
-- **Other:** Web3Forms (contact), Framer Motion (animations) *(if applicable)*
 
 ---
 
