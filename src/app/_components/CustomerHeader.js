@@ -107,7 +107,7 @@ const CustomerHeader = ({ cartData, removeCartData, removeCart }) => {
           <Link href={cartCount? "/cart": "#"}>Cart({cartCount? cartCount : 0})</Link>
         </li>
         <li>
-          <Link href="/">Add Restaurant</Link>
+          <Link href="/restaurant">Add Restaurant</Link>
         </li>
         <li>
           <Link href="/deliverypartner">Delivery Partner</Link>
