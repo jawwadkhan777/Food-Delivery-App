@@ -1,6 +1,6 @@
 "use client"
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import CustomerHeader from "../_components/CustomerHeader";
 import Footer from "../_components/Footer";
 import { DELIVERY_CHARGES, TAX_PER } from "../lib/constants";
@@ -8,14 +8,23 @@ import { useRouter } from "next/navigation";
 
 
 const Page = ()=> {
-
-    const [cartStorage, setCartStorage] = useState(JSON.parse(localStorage.getItem("cart")));
-
-    const [total] = useState(()=> cartStorage.length==1? cartStorage[0].price : cartStorage.reduce((a,b)=> {
-        return a.price+b.price;
-    }))
+    const [cartStorage, setCartStorage] = useState([]);
+    const [total, setTotal] = useState(0);
     const router = useRouter();
     // console.log(total);
+    
+    useEffect(() => {
+        const cartData = JSON.parse(localStorage.getItem("cart") || "[]");
+        setCartStorage(cartData);
+
+        if (cartData.length > 0) {
+            const totalPrice =
+            cartData.length === 1
+            ? cartData[0].price
+            : cartData.reduce((a, b) => a + b.price, 0);
+            setTotal(totalPrice);
+        }
+    }, []);
     
     const orderNowHandler = ()=> {
         if(JSON.parse(localStorage.getItem('user')))
