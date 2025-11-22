@@ -1,4 +1,5 @@
-const { Mongoose, default: mongoose } = require("mongoose");
+// const { Mongoose, default: mongoose } = require("mongoose");
+import mongoose from "mongoose"
 
 
 const orderModel = new mongoose.Schema({
