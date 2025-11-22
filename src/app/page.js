@@ -18,7 +18,7 @@ export default function Home() {
   }, []);
 
   const loadLocations = async ()=> {
-    let response = await fetch("http://localhost:3000/api/customer/locations");
+    let response = await fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL}/api/customer/locations`);
     response = await response.json();
     if(response.success) {
       setlocations(response.result);
@@ -26,7 +26,7 @@ export default function Home() {
   }
 
   const loadRestaurants = async (params)=> {
-    let url = "http://localhost:3000/api/customer";
+    let url = `${process.env.NEXT_PUBLIC_API_BASE_URL}/api/customer`;
     if(params?.location) {
       // console.log("location");
       url = `${url}?location=${params.location}`;

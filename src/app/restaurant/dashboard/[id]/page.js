@@ -18,7 +18,7 @@ const EditFoodItem = (props)=> {
     }, []);
 
     const loadFoodItemHandler = async ()=> {
-        let response = await fetch(`http://localhost:3000/api/restaurant/foods/edit/${props.params.id}`); 
+        let response = await fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL}/api/restaurant/foods/edit/${props.params.id}`); 
         response = await response.json();
 
         if(response.success) {
@@ -39,7 +39,7 @@ const EditFoodItem = (props)=> {
             setError(false);
         }
         console.log(name, price, path, description);
-        let response = await fetch(`http://localhost:3000/api/restaurant/foods/edit/${props.params.id}`, {
+        let response = await fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL}/api/restaurant/foods/edit/${props.params.id}`, {
             method: "PUT",
             body: JSON.stringify({name, price, img_path: path, description})
         });

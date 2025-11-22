@@ -16,7 +16,7 @@ const FoodItemList = ()=> {
         let resto_id = restoData._id;
         console.log(resto_id);
         
-        let response = await fetch(`http://localhost:3000/api/restaurant/foods/${resto_id}`)
+        let response = await fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL}/api/restaurant/foods/${resto_id}`)
         response = await response.json();
 
         if(response.success) 
@@ -26,7 +26,7 @@ const FoodItemList = ()=> {
     }
 
     const deleteFoodItem = async(id) => {
-        let response = await fetch(`http://localhost:3000/api/restaurant/foods/${id}`, {
+        let response = await fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL}/api/restaurant/foods/${id}`, {
             method: "delete"
         })
 

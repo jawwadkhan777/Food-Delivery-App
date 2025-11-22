@@ -24,7 +24,7 @@ const AddFoodItem = ({setAddItem})=> {
         const data = {name, price, img_path:path, description, resto_id};
         console.log(data);
         
-        let response = await fetch("http://localhost:3000/api/restaurant/foods", {
+        let response = await fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL}/api/restaurant/foods`, {
             method: "POST",
             body: JSON.stringify(data)
         });

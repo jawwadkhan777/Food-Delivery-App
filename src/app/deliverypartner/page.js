@@ -26,7 +26,7 @@ const Page = ()=> {
 
     const signUpHandler = async ()=> {
         // console.log(name, contact,password,confirmPassword,city,address);
-        let response = await fetch('http://localhost:3000/api/deliverypartners/signup', {
+        let response = await fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL}/api/deliverypartners/signup`, {
             method: 'post',
             body: JSON.stringify({name,contact,password,city,address})
         });
@@ -45,7 +45,7 @@ const Page = ()=> {
     }
 
     const loginHandler = async ()=> {
-        let response = await fetch('http://localhost:3000/api/deliverypartners/login', {
+        let response = await fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL}/api/deliverypartners/login`, {
             method: 'post',
             body: JSON.stringify({loginContact,loginPassword})
         });

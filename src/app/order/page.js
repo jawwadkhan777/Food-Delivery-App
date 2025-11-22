@@ -168,7 +168,7 @@ const Page = () => {
     const foodItemIds = cartStorage.map((item) => item._id).toString();
 
     let deliveryRes = await fetch(
-      `http://localhost:3000/api/deliverypartners/${city}`
+      `${process.env.NEXT_PUBLIC_API_BASE_URL}/api/deliverypartners/${city}`
     );
     deliveryRes = await deliveryRes.json();
 
@@ -190,7 +190,7 @@ const Page = () => {
       amount: total + (total * TAX_PER) / 100 + DELIVERY_CHARGES,
     };
 
-    let response = await fetch("http://localhost:3000/api/order", {
+    let response = await fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL}/api/order`, {
       method: "POST",
       body: JSON.stringify(collection),
     });

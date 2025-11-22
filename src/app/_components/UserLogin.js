@@ -10,7 +10,7 @@ const UserLogin = (props)=> {
     // console.log("Login", props);
 
     const loginHandler = async ()=> {
-        let response = await fetch('http://localhost:3000/api/user/login', {
+        let response = await fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL}/api/user/login`, {
             method: 'post',
             body: JSON.stringify({email,password})
         });

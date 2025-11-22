@@ -13,7 +13,7 @@ const Page = ()=> {
     
     const getMyOrder = async ()=> {
             const deliveryStorage = JSON.parse(localStorage.getItem("deliveryPartner"));
-            let response = await fetch(`http://localhost:3000/api/deliverypartners/orders/${deliveryStorage._id}`);
+            let response = await fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL}/api/deliverypartners/orders/${deliveryStorage._id}`);
             response  = await response.json();
             
             if(response.success) {

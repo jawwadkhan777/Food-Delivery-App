@@ -27,7 +27,7 @@ const Page = (props)=> {
         const id = props.searchParams.id;
         // console.log(id);
         
-        let response = await fetch(`http://localhost:3000/api/customer/${id}`);
+        let response = await fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL}/api/customer/${id}`);
         response = await response.json();
         // console.log(response);
         if(response.success) {
