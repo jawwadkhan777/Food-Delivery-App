@@ -28,35 +28,65 @@ const RestaurantHeader = () => {
         route.push("/restaurant");
     }
 
-    return(
-        <div className="header-wrapper">
-            <div>
-                <img style={{width:100}} src="https://s.tmimgcdn.com/scr/1200x627/242400/food-delivery-custom-design-logo-template_242462-original.png"/>
+    return (
+        <header className="erp-header">
+            <div className="erp-brand-container">
+                <img 
+                    className="erp-logo" 
+                    src="https://s.tmimgcdn.com/scr/1200x627/242400/food-delivery-custom-design-logo-template_242462-original.png" 
+                    alt="FoodExpress Partner Logo" 
+                />
+                <div className="erp-title-block">
+                    <span className="erp-title">FoodExpress</span>
+                    <span className="erp-badge">Partner Portal</span>
+                </div>
             </div>
-            <ul>
+            <ul className="erp-nav">
                 <li>
-                    <Link href="/">Home</Link>
+                    <Link href="/" className={`erp-nav-item ${pathName === "/" ? "active" : ""}`}>
+                        Home
+                    </Link>
                 </li>
-                {
-                    details && setDetails?
+                {details ? (
                     <>
                         <li>
-                            <Link href="/">Profile</Link>
+                            <Link 
+                                href="/restaurant/dashboard" 
+                                className={`erp-nav-item ${pathName.startsWith("/restaurant/dashboard") ? "active" : ""}`}
+                            >
+                                Dashboard
+                            </Link>
                         </li>
+                        <li>
+                            <div className="erp-user-profile">
+                                <div className="erp-avatar">
+                                    {details.name ? details.name.charAt(0).toUpperCase() : "R"}
+                                </div>
+                                <div className="erp-user-info">
+                                    <span className="name">{details.name}</span>
+                                    <span className="role">{details.city || "Partner"}</span>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <button className="erp-logout-btn" onClick={logoutHandler}>
+                                Logout
+                            </button>
+                        </li>
+                    </>
+                ) : (
                     <li>
-                    <button onClick={logoutHandler}>Logout</button>
-                </li>
-
-                    </>:
-                                    <li>
-                    <Link href="/">Login/Signup</Link>
-                </li>
-
-
-                }
+                        <Link 
+                            href="/restaurant" 
+                            className={`erp-nav-item ${pathName === "/restaurant" ? "active" : ""}`}
+                        >
+                            Login / Signup
+                        </Link>
+                    </li>
+                )}
             </ul>
-        </div>
-    )
-}
+        </header>
+    );
+};
 
 export default RestaurantHeader;
